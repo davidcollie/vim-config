@@ -6,10 +6,6 @@ set rtp+=~/vimfiles/bundle/vundle/
 let path='~/vimfiles/bundle'
 call vundle#rc(path)
 
-" alternatively, pass a path where Vundle should install plugins
-"let path = '~/some/path/here'
-"call vundle#rc(path)
-
 " let Vundle manage Vundle, required
 Plugin 'gmarik/vundle'
 
@@ -18,14 +14,31 @@ Plugin 'scrooloose/syntastic.git'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'Gundo'
 Plugin 'tpope/vim-fugitive'
+Plugin 'ervandew/supertab'
+
+"language specific
+Plugin 'derekwyatt/vim-sbt.git'
+Plugin 'derekwyatt/vim-scala.git'
+Plugin 'elzr/vim-json.git'
 
 " Enable filetype plugin
 filetype plugin indent on
 
 colors zenburn
 
+" Make the command-line completion better
+set wildmenu
+
+" Same as default except that I remove the 'u' option
+set complete=.,w,b,t
+
+let g:SuperTabDefaultCompletionType = "context"
+
 set guifont=Consolas:h11:cANSI
+" remove toolbar, right and left scrollbars
 set guioptions-=T
+set guioptions-=r
+set guioptions-=L
 
 set columns=100
 set lines=50
@@ -63,9 +76,6 @@ set magic "Set magic on, for regular expressions
 set showmatch "Show matching bracets when text indicator is over them
 set mat=2 "How many tenths of a second to blink
 
-" tag related configuration
-set tags=./tags;/
-
 syntax on
 
 " Turn backup off, since most stuff is in SVN, git anyway...
@@ -78,7 +88,7 @@ set autoindent
 set smartindent
 
 "always use tabs
-set expandtab
+set noexpandtab
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2

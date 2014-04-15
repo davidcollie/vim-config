@@ -15,6 +15,7 @@ Plugin 'scrooloose/nerdtree.git'
 Plugin 'Gundo'
 Plugin 'tpope/vim-fugitive'
 Plugin 'ervandew/supertab'
+Plugin 'tomtom/tcomment_vim'
 
 "language specific
 Plugin 'derekwyatt/vim-sbt.git'

@@ -2,9 +2,14 @@ set nocompatible
 filetype off
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/vimfiles/bundle/vundle/
-let path='~/vimfiles/bundle'
-call vundle#rc(path)
+if has('unix')
+	set rtp+=~/.vim/bundle/Vundle.vim
+	call vundle#begin()
+else
+	set rtp+=~/vimfiles/bundle/vundle/
+	let path='~/vimfiles/bundle'
+	call vundle#rc(path)
+endif
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/vundle'
@@ -47,11 +52,13 @@ set complete=.,w,b,t
 
 let g:SuperTabDefaultCompletionType = "context"
 
-set guifont=Consolas:h11:cANSI
-" remove toolbar, right and left scrollbars
-set guioptions-=T
-set guioptions-=r
-set guioptions-=L
+if has('gui_running')
+	set guifont=Menlo:h12
+	" remove toolbar, right and left scrollbars
+	set guioptions-=T
+	set guioptions-=r
+	set guioptions-=L
+endif
 
 set columns=100
 set lines=50
@@ -59,8 +66,6 @@ set numberwidth=4
 
 if exists('+colorcolumn')
   set colorcolumn=100
-else
-  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>100v.\+', -1)
 endif
 
 " auto change windows present working directory to file being edited
@@ -116,12 +121,6 @@ set foldmethod=indent
 set foldnestmax=10
 set nofoldenable
 set foldlevel=1
-
-" Folding : http://vim.wikia.com/wiki/Syntax-based_folding, see comment by Ostrygen au FileType cs set omnifunc=syntaxcomplete#Complete 
-au FileType cs set foldmethod=marker 
-au FileType cs set foldmarker={,} 
-au FileType cs set foldtext=substitute(getline(v:foldstart),'{.*','{...}',) 
-au FileType cs set foldlevelstart=2  
 
 au FileType cs set omnifunc=syntaxcomplete#Complete
 

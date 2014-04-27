@@ -21,6 +21,7 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'derekwyatt/vim-sbt.git'
 Plugin 'derekwyatt/vim-scala.git'
 Plugin 'elzr/vim-json.git'
+Plugin 'kchmck/vim-coffee-script'
 
 " Enable filetype plugin
 filetype plugin indent on
@@ -29,6 +30,17 @@ colors zenburn
 
 " Make the command-line completion better
 set wildmenu
+
+"ignore certain files
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*,*/public/*,*/bower_components/*,*/bin/*
+set wildignore+=*\\tmp\\*,*.exe,*\\node_modules\\*,*\\public\\*,*\\target\\*,*\\bower_components\\*,*\\bin\\*
+
+"ctrl-p ignore dot files
+let g:ctrlp_dotfiles = 0
+
+"syntastic disabled by default
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+nnoremap <C-e> :SyntasticCheck<CR> :SyntasticToggleMode<CR>
 
 " Same as default except that I remove the 'u' option
 set complete=.,w,b,t

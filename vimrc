@@ -37,8 +37,8 @@ colors zenburn
 set wildmenu
 
 "ignore certain files
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*,*/public/*,*/bower_components/*,*/bin/*
-set wildignore+=*\\tmp\\*,*.exe,*\\node_modules\\*,*\\public\\*,*\\target\\*,*\\bower_components\\*,*\\bin\\*
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*,*/public/*,*/target/*,*/bower_components/*,*/bin/*,*/lib/*,*/lib_managed/*
+set wildignore+=*\\tmp\\*,*.exe,*\\node_modules\\*,*\\public\\*,*\\target\\*,*\\bower_components\\*,*\\bin\\*,*\\lib\\*,*\\lib_managed\\*
 
 "ctrl-p ignore dot files
 let g:ctrlp_dotfiles = 0
@@ -60,8 +60,8 @@ if has('gui_running')
 	set guioptions-=L
 endif
 
-set columns=100
-set lines=50
+"set columns=100
+"set lines=50
 set numberwidth=4
 
 if exists('+colorcolumn')

@@ -43,6 +43,9 @@ set wildignore+=*\\tmp\\*,*.exe,*\\node_modules\\*,*\\public\\*,*\\target\\*,*\\
 "ctrl-p ignore dot files
 let g:ctrlp_dotfiles = 0
 
+"map Gundo
+nnoremap <F4> :GundoToggle<CR>
+
 "syntastic disabled by default
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
 nnoremap <C-e> :SyntasticCheck<CR> :SyntasticToggleMode<CR>
@@ -53,7 +56,11 @@ set complete=.,w,b,t
 let g:SuperTabDefaultCompletionType = "context"
 
 if has('gui_running')
-	set guifont=Menlo:h12
+	if has('unix')
+		set guifont=Menlo:h12
+	else
+		set guifont=Consolas:h11:cANSI
+	endif
 	" remove toolbar, right and left scrollbars
 	set guioptions-=T
 	set guioptions-=r
@@ -113,7 +120,7 @@ set softtabstop=2
 set smarttab
 
 " show as much whitespace as possible
-set listchars=tab:»\ ,eol:¬,nbsp:·,trail:·,extends:>,precedes:<
+set listchars=tab:»\ ,nbsp:·,trail:·,extends:>,precedes:<
 set list
 
 "folding

@@ -120,7 +120,7 @@ set softtabstop=2
 set smarttab
 
 " show as much whitespace as possible
-set listchars=tab:»\ ,nbsp:·,trail:·,extends:>,precedes:<
+set listchars=tab:»\ ,eol:¬,nbsp:·,trail:·,extends:>,precedes:<
 set list
 
 "folding

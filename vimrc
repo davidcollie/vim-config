@@ -114,8 +114,8 @@ set noswapfile
 set autoindent
 set smartindent
 
-"always use tabs
-set noexpandtab
+"always use space
+set expandtab
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2

@@ -23,10 +23,12 @@ Plugin 'ervandew/supertab'
 Plugin 'tomtom/tcomment_vim'
 
 "language specific
-Plugin 'derekwyatt/vim-sbt.git'
-Plugin 'derekwyatt/vim-scala.git'
 Plugin 'elzr/vim-json.git'
 Plugin 'kchmck/vim-coffee-script'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-rake'
 
 " Enable filetype plugin
 filetype plugin indent on

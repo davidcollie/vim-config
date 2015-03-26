@@ -2,17 +2,11 @@ set nocompatible
 filetype off
 
 " set the runtime path to include Vundle and initialize
-if has('unix')
-	set rtp+=~/.vim/bundle/Vundle.vim
-	call vundle#begin()
-else
-	set rtp+=~/vimfiles/bundle/vundle/
-	let path='~/vimfiles/bundle'
-	call vundle#rc(path)
-endif
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " let Vundle manage Vundle, required
-Plugin 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/syntastic.git'
@@ -30,17 +24,21 @@ Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-rake'
 
+call vundle#end()
 " Enable filetype plugin
 filetype plugin indent on
+
+highlight ColorColumn ctermbg=grey guibg=#333333
+let &colorcolumn=join(range(81,500),",")
 
 colors zenburn
 
 " Make the command-line completion better
 set wildmenu
 
+
 "ignore certain files
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*,*/public/*,*/target/*,*/bower_components/*,*/bin/*,*/lib/*,*/lib_managed/*
-set wildignore+=*\\tmp\\*,*.exe,*\\node_modules\\*,*\\public\\*,*\\target\\*,*\\bower_components\\*,*\\bin\\*,*\\lib\\*,*\\lib_managed\\*
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*,*/target/*,*/bower_components/*,*/bin/*,*/lib_managed/*
 
 "ctrl-p ignore dot files
 let g:ctrlp_dotfiles = 0
@@ -69,13 +67,8 @@ if has('gui_running')
 	set guioptions-=L
 endif
 
-"set columns=100
-"set lines=50
 set numberwidth=4
 
-if exists('+colorcolumn')
-  set colorcolumn=100
-endif
 
 " auto change windows present working directory to file being edited
 autocmd BufEnter * silent! lcd %:p:h
@@ -134,48 +127,5 @@ set foldlevel=1
 au FileType cs set omnifunc=syntaxcomplete#Complete
 
 let mapleader = ","
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Parenthesis/bracket expanding
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"vnoremap $1 <esc>`>a)<esc>`<i(<esc>
-"vnoremap $2 <esc>`>a]<esc>`<i[<esc>
-"vnoremap $3 <esc>`>a}<esc>`<i{<esc>
-"vnoremap $$ <esc>`>a"<esc>`<i"<esc>
-"vnoremap $q <esc>`>a'<esc>`<i'<esc>
-"vnoremap $e <esc>`>a"<esc>`<i"<esc>
-
-" Map auto complete of (, ", ', [
-"inoremap ( ()<esc>i
-"inoremap [ []<esc>i
-"inoremap { {}<Left>
-"inoremap {<CR> {<CR>}<esc>O
-"inoremap ' ''<esc>i
-"inoremap " ""<esc>i
-
-set diffexpr=MyDiff()
-function MyDiff()
-  let opt = '-a --binary '
-  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-  let arg1 = v:fname_in
-  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-  let arg2 = v:fname_new
-  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-  let arg3 = v:fname_out
-  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-  let eq = ''
-  if $VIMRUNTIME =~ ' '
-    if &sh =~ '\<cmd'
-      let cmd = '""' . $VIMRUNTIME . '\diff"'
-      let eq = '"'
-    else
-      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-    endif
-  else
-    let cmd = $VIMRUNTIME . '\diff'
-  endif
-  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
-endfunction
-
+set diffexpr=
 

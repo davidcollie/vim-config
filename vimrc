@@ -28,10 +28,8 @@ call vundle#end()
 " Enable filetype plugin
 filetype plugin indent on
 
-highlight ColorColumn ctermbg=grey guibg=#333333
-let &colorcolumn=join(range(81,500),",")
-
 colors zenburn
+
 
 " Make the command-line completion better
 set wildmenu
@@ -88,15 +86,20 @@ set smartcase
 set hlsearch! "Highlight search things
 nnoremap <esc> :noh<return><esc>
 
+
 set incsearch "Make search act like search in modern browsers
 set nolazyredraw "Don't redraw while executing macros 
 
 set magic "Set magic on, for regular expressions
 
+
 set showmatch "Show matching bracets when text indicator is over them
 set mat=2 "How many tenths of a second to blink
 
 syntax on
+
+highlight ColorColumn ctermbg=grey guibg=#333333
+let &colorcolumn=join(range(81,500),",")
 
 " Turn backup off, since most stuff is in SVN, git anyway...
 set nobackup
@@ -113,6 +116,7 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set smarttab
+
 
 " show as much whitespace as possible
 set listchars=tab:»\ ,eol:¬,nbsp:·,trail:·,extends:>,precedes:<
